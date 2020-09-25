@@ -1,0 +1,42 @@
+<section>
+    <div>
+        <button mat-button routerLink="logout" routerLinkActive="active">
+            Logout
+        </button>
+    </div>
+    <mat-toolbar color="primary">
+        <div fxHide.gt-xs>
+            <button mat-icon-button (click)="onToggleSidenav()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+        <div>
+            <button routerLink="home">HRMS</button>
+        </div>
+        <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+            <div fxLayout fxLayoutGap="15px" class="navigation-items">
+
+                <button mat-button routerLink="/users" routerLinkActive="active">
+                    Staffs
+                </button>
+
+                <button mat-button routerLink="Patients" routerLinkActive="active">
+                    Patients
+                </button>
+
+                <button mat-button routerLink="Billings" routerLinkActive="active">
+                    Billing
+                </button>
+
+                <button mat-button routerLink="Reports" routerLinkActive="active">
+                    Reports
+                </button>
+
+                <button mat-button routerLink="Profile" routerLinkActive="active">
+                    Profile
+                </button>
+
+            </div>
+        </div>
+    </mat-toolbar>
+</section>

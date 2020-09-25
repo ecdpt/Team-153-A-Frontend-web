@@ -1,0 +1,67 @@
+<main>
+  <mat-progress-bar *ngIf="show" mode="indeterminate"></mat-progress-bar>
+  <div class="heading">
+    <p>Enter login information</p>
+  </div>
+  <div>
+    <form [formGroup]="loginForm">
+      <mat-horizontal-stepper [linear]="true" #stepper class="shadow-lg p-3 mb-5 bg-white rounded">
+        <mat-step>
+          <p>
+            <ng-template matStepLabel>Fill your client ID</ng-template>
+            <mat-form-field appearance="legacy">
+              <input matInput placeholder="Client ID" formControlName="id" minlength="7">
+              <mat-error>
+                <span *ngIf="!loginForm.get('id')!.valid && !!loginForm.get('id')!.touched">
+                  Please enter 7 characters client ID
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <div>
+            <button mat-button routerLink="/" matStepperPrevious color="accent">Cancel</button>
+            <button mat-button matStepperNext color="accent">Next</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <p>
+            <ng-template matStepLabel>Fill your email and password</ng-template>
+            <mat-form-field appearance="legacy">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Enter your email" formControlName="email">
+              <mat-error>
+                <span *ngIf="!loginForm.get('email')!.valid && loginForm.get('email')!.touched">Please enter First Name
+                  !!!
+                </span>
+              </mat-error>
+              <mat-hint>Valid email address</mat-hint>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="legacy">
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+                formControlName="password" minlength="6">
+              <mat-error *ngIf="!loginForm.get('password')!.valid && loginForm.get('password')!.touched">Invalid password
+              </mat-error>
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-hint>Min 6 characters</mat-hint>
+            </mat-form-field>
+          </p>
+          <div>
+            <button mat-button matStepperPrevious color="accent">Previous</button>
+            <button mat-button matStepperNext color="accent">Next</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p class="done">Click Log in OR Back to modify your entries</p>
+          <div>
+            <button mat-button matStepperPrevious color="accent">Back</button>
+            <button mat-button (click)="onSubmit()" [disabled]="!loginForm.valid" color="accent">Submit</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </form>
+  </div>
+</main>
