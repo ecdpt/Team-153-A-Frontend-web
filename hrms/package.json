@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "start:prod": "node dist/src/main.js",
+    "postinstall": "npm run prestart:prod",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -26,6 +28,8 @@
     "apollo-angular": "^2.0.4",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-graphql": "^0.6.0",
+    "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
     "graphql": "^15.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

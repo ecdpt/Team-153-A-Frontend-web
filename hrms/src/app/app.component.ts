@@ -3,7 +3,6 @@ import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
 import { GH_AUTH_TOKEN } from './constants';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,6 +17,7 @@ export class AppComponent {
   constructor(private apollo: Apollo) {}
 
   ngOnInit() {
+    console.log(process.env.NODE_ENV)
     const token = localStorage.getItem(GH_AUTH_TOKEN);
     console.log(token)
     this.apollo

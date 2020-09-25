@@ -5,7 +5,11 @@ import {HttpLink} from 'apollo-angular/http';
 import { setContext } from '@apollo/client/link/context';
 import { GH_AUTH_TOKEN } from './constants';
 
-const uri = process.env.URI;//'http://127.0.0.1:3000/graphql'; //'https://o5x5jzoo7z.sse.codesandbox.io/graphql'; //'; // <-- add the URL of the GraphQL server here
+if (process.env.NODE_ENV === 'production') {
+  require('dotenv').config();
+}
+
+const uri = process.env['URI'] || 'http://127.0.0.1:3000/graphql'; //process.env.URI;//'https://o5x5jzoo7z.sse.codesandbox.io/graphql'; //'; // <-- add the URL of the GraphQL server here
 /*export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
     link: httpLink.create({uri}),
